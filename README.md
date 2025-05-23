@@ -1,6 +1,6 @@
-# Selenium
+п»ї# Selenium
 
-- Для сайту https://www.selenium.dev/selenium/web/web-form.html .
+- Р”Р»СЏ СЃР°Р№С‚Сѓ https://www.selenium.dev/selenium/web/web-form.html .
 
 ```C#
 private string url = "https://www.selenium.dev/selenium/web/web-form.html";
@@ -8,9 +8,9 @@ private string url = "https://www.selenium.dev/selenium/web/web-form.html";
 driver.Navigate().GoToUrl(url);
 ```
 
-- Реалізувати принаймні 3 тестові сценарії використовуючи бібліотеку Selenium.
-- Кожен сценарій повинен взаємодіяти принаймні з 2 елементами.
-- Повинні перевірятися результати взаємодії.
+- Р РµР°Р»С–Р·СѓРІР°С‚Рё РїСЂРёРЅР°Р№РјРЅС– 3 С‚РµСЃС‚РѕРІС– СЃС†РµРЅР°СЂС–С— РІРёРєРѕСЂРёСЃС‚РѕРІСѓСЋС‡Рё Р±С–Р±Р»С–РѕС‚РµРєСѓ Selenium.
+- РљРѕР¶РµРЅ СЃС†РµРЅР°СЂС–Р№ РїРѕРІРёРЅРµРЅ РІР·Р°С”РјРѕРґС–СЏС‚Рё РїСЂРёРЅР°Р№РјРЅС– Р· 2 РµР»РµРјРµРЅС‚Р°РјРё.
+- РџРѕРІРёРЅРЅС– РїРµСЂРµРІС–СЂСЏС‚РёСЃСЏ СЂРµР·СѓР»СЊС‚Р°С‚Рё РІР·Р°С”РјРѕРґС–С—.
 
 # Test 1
 
@@ -20,17 +20,17 @@ public void TextboxColor()
 {
 	string green = "#00ff00";
 
-	// Елемент 1
+	// Р•Р»РµРјРµРЅС‚ 1
 	Get(By.Name("my-text")).SendKeys(green);
-	// Перевірка
+	// РџРµСЂРµРІС–СЂРєР°
 	Assert.That(Get(By.Name("my-text")).GetAttribute("value"), Is.EqualTo(green));
 
-	// Елемент 2
+	// Р•Р»РµРјРµРЅС‚ 2
 	((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].value = arguments[1];", Get(By.Name("my-colors")), green);
-	// Перевірка
+	// РџРµСЂРµРІС–СЂРєР°
 	Assert.That(Get(By.Name("my-colors")).GetAttribute("value"), Is.EqualTo(green));
 
-	// Формальна взаємодія
+	// Р¤РѕСЂРјР°Р»СЊРЅР° РІР·Р°С”РјРѕРґС–СЏ
 	Get(By.CssSelector("button")).Click();
 	Assert.That(Get(By.Id("message")).Text, Is.EqualTo("Received!"));
 }
@@ -42,17 +42,17 @@ public void TextboxColor()
 [Test]
 public void DropdownCheckbox()
 {
-	// Елемент 1
+	// Р•Р»РµРјРµРЅС‚ 1
 	Get(By.Name("my-select")).FindElement(By.CssSelector("option[value='2']")).Click();
-	// Перевірка
+	// РџРµСЂРµРІС–СЂРєР°
 	Assert.That(Get(By.Name("my-select")).GetAttribute("value"), Is.EqualTo("2"));
 
-	// Елемент 2
+	// Р•Р»РµРјРµРЅС‚ 2
 	Get(By.Id("my-check-1")).Click();
-	// Перевірка
+	// РџРµСЂРµРІС–СЂРєР°
 	Assert.That(Get(By.Id("my-check-1")).GetAttribute("checked"), Is.Not.Empty);
 
-	// Формальна взаємодія
+	// Р¤РѕСЂРјР°Р»СЊРЅР° РІР·Р°С”РјРѕРґС–СЏ
 	Get(By.CssSelector("button")).Click();
 	Assert.That(Get(By.Id("message")).Text, Is.EqualTo("Received!"));
 }
@@ -64,26 +64,26 @@ public void DropdownCheckbox()
 [Test]
 public void DatetimeRadio()
 {
-	// Елемент 1
+	// Р•Р»РµРјРµРЅС‚ 1
 	Get(By.Name("my-date")).SendKeys("2025-05-03");
-	// Перевірка
+	// РџРµСЂРµРІС–СЂРєР°
 	Assert.That(Get(By.Name("my-date")).GetAttribute("value"), Is.EqualTo("2025-05-03"));
 
-	// Елемент 2
+	// Р•Р»РµРјРµРЅС‚ 2
 	Get(By.Id("my-radio-1")).Click();
-	// Перевірка
+	// РџРµСЂРµРІС–СЂРєР°
 	Assert.Multiple(() =>
 	{
 		Assert.That(Get(By.Id("my-radio-1")).GetAttribute("checked"), Is.Not.Empty);
 		Assert.That(Get(By.Id("my-radio-2")).GetAttribute("checked"), Is.Null);
 	});
 
-	// Формальна взаємодія
+	// Р¤РѕСЂРјР°Р»СЊРЅР° РІР·Р°С”РјРѕРґС–СЏ
 	Get(By.CssSelector("button")).Click();
 	Assert.That(Get(By.Id("message")).Text, Is.EqualTo("Received!"));
 }
 ```
 
-# Висновки
+# Р’РёСЃРЅРѕРІРєРё
 
-Бібліотека Selenium пропонує усі необхідні інструменти для автоматизації взаємодії користувача з веб інтерфейсом.
+Р‘С–Р±Р»С–РѕС‚РµРєР° Selenium РїСЂРѕРїРѕРЅСѓС” СѓСЃС– РЅРµРѕР±С…С–РґРЅС– С–РЅСЃС‚СЂСѓРјРµРЅС‚Рё РґР»СЏ Р°РІС‚РѕРјР°С‚РёР·Р°С†С–С— РІР·Р°С”РјРѕРґС–С— РєРѕСЂРёСЃС‚СѓРІР°С‡Р° Р· РІРµР± С–РЅС‚РµСЂС„РµР№СЃРѕРј.
